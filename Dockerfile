@@ -24,7 +24,8 @@ COPY src/config/app.config.example.js ./src/config/app.config.js
 RUN npm run build
 
 # Choose what port to expose
-EXPOSE 8080
+EXPOSE 8585
 
 # Run the app
-CMD ["http-server", "dist"]
+#CMD ["http-server", "dist"]
+CMD ["http-server", "dist", "-p", "8085"]

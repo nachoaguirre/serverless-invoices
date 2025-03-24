@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  serverless-invoices:
+    container_name: serverless-invoices
+    image: mokuappio/serverless-invoices
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8085:8085"
+    environment:
+      - PORT=8085
+    restart: always
