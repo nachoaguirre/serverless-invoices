@@ -67,7 +67,9 @@ export default {
   },
   methods: {
     currency(val, digits = 2) {
-      const separator = (this.team && this.team.thousands_separator) || ',';
+      const separator = (this.team && this.team.thousands_separator !== undefined)
+        ? this.team.thousands_separator
+        : ',';
       return formatCurrency(val, digits, separator);
     },
     openInvoice(invoice) {
