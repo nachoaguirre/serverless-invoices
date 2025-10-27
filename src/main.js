@@ -8,7 +8,7 @@ import App from '@/App.vue';
 import router from '@/router';
 import store from '@/store/store';
 import VueNotifications from 'vue-notification';
-import './registerServiceWorker';
+// import './registerServiceWorker';
 import i18n from './config/i18n.config';
 
 Vue.use(ModalPlugin);

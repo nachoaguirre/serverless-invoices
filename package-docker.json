@@ -24,8 +24,6 @@
     "localforage": "^1.9.0",
     "lodash": "^4.17.21",
     "register-service-worker": "^1.7.1",
-    "sass": "^1.79.3",
-    "sass-migrator": "^2.3.1",
     "vue": "^2.6.10",
     "vue-autosuggest": "^2.2.0",
     "vue-multiselect": "^2.1.6",
@@ -44,6 +42,7 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^6.0.0",
     "sass-loader": "^10",
     "vue-template-compiler": "^2.5.21"
   }

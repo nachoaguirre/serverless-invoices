@@ -22,7 +22,7 @@
                            :inline="true"
                            field="issued_at"/>
         </BModal>
-        <span class="d-print-none">
+        <span :class="{'d-print-none': !invoice.due_at}">
           <br>{{ $t('due_at') }}
           <span class="editable__item"
               v-b-modal.modal_due_at>{{ invoice.due_at | date('D. MMM YYYY', 'YYYY-MM-DD') }}</span>
@@ -39,9 +39,9 @@
                            :inline="true"
                            field="due_at"/>
         </BModal>
-        <span class="d-print-none">
+        <span :class="{'d-print-none': !invoice.late_fee}">
           <br>{{ $t('late_fee') }}
-          <AppEditable :value="invoice.late_fee | currency"
+          <AppEditable :value="currency(invoice.late_fee)"
                      :errors="errors"
                      suffix="%"
                      field="late_fee"
@@ -54,6 +54,7 @@
 import { BModal, VBModal } from 'bootstrap-vue';
 import AppEditable from '@/components/form/AppEditable';
 import AppDatePicker from '@/components/form/AppDatePicker';
+import { mapGetters } from 'vuex';
 import { formatDate } from '@/filters/date.filter';
 import { formatCurrency } from '@/filters/currency.filter';
 
@@ -70,9 +71,17 @@ export default {
   },
   filters: {
     date: formatDate,
-    currency: formatCurrency,
+  },
+  computed: {
+    ...mapGetters({
+      team: 'teams/team',
+    }),
   },
   methods: {
+    currency(val, digits = 2) {
+      const separator = (this.team && this.team.thousands_separator) || ',';
+      return formatCurrency(val, digits, separator);
+    },
     updateProp(props) {
       this.$emit('update', props);
     },

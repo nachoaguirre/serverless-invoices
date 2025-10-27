@@ -42,15 +42,20 @@ const router = new Router({
   routes,
 });
 
+// router.beforeEach((to, from, next) => {
+//   if (!to.query.lang) {
+//     i18n.initialized.then(() => {
+//       next({
+//         path: to.path,
+//         query: { ...to.query, lang: i18n.i18next.language }
+//       });
+//     });
+//   } else {
+//     next();
+//   }
+// });
 router.beforeEach((to, from, next) => {
-  if (!to.query.hasOwnProperty('lang')) {
-    i18n.initialized.then(() => {
-      to.query.lang = i18n.i18next.language;
-      next(to);
-    });
-  } else {
-    next();
-  }
+  next();
 });
 
 export default router;

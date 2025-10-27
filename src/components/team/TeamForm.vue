@@ -48,6 +48,9 @@
                                   class="col-sm-7"/>
                         <AppInput :value="team.currency" @change="updateProp({ currency: $event })"
                                   :label="$t('invoicing.currency')" field="currency" :errors="errors" class="col-sm-5"/>
+                        <AppInput :value="team.thousands_separator" @change="updateProp({ thousands_separator: $event })"
+                                  :label="$t('invoicing.thousands_separator')" field="thousands_separator" :errors="errors"
+                                  class="col-12"/>
                     </div>
                 </b-tab>
 

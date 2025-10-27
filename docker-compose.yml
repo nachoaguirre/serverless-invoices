@@ -11,4 +11,4 @@ services:
       - "8085:8085"
     environment:
       - PORT=8085
-    restart: always
+    restart: "no"

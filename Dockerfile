@@ -3,16 +3,18 @@
 
 FROM node:16
 
-RUN npm install -g http-server
+# RUN npm install -g http-server
 
 # Create app directory
 WORKDIR /app
 
 # Copy package.json and package-lock.json
+# COPY package-docker*.json ./
 COPY package*.json ./
 
 # Install
-RUN npm install
+# RUN npm install
+RUN npm ci
 
 # Bundle app source
 COPY . .
@@ -23,9 +25,13 @@ COPY src/config/app.config.example.js ./src/config/app.config.js
 # Build the app
 RUN npm run build
 
+WORKDIR /app
+
+RUN npm install -g http-server
+
 # Choose what port to expose
-EXPOSE 8585
+# EXPOSE 8585
+EXPOSE 8085
 
 # Run the app
-#CMD ["http-server", "dist"]
 CMD ["http-server", "dist", "-p", "8085"]

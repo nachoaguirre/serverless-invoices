@@ -100,6 +100,7 @@ export default {
         from_website: 'website',
         from_email: 'contact_email',
         from_phone: 'contact_phone',
+        thousands_separator: 'thousands_separator',
       });
       const invoice = getInvoice(payload.invoiceId);
 
@@ -180,7 +181,7 @@ export default {
           .add(team.invoice_due_days || 14, 'days')
           .format('YYYY-MM-DD'),
         number: generateInvoiceNumber(getters.all),
-        late_fee: team.invoice_late_fee || 0.5,
+        late_fee: team.invoice_late_fee,
         currency: team.currency || 'USD',
       };
 
